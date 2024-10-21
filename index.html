@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook-P4-M08</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            content.style.display = (content.style.display === "none") ? "block" : "none";
+        }
+
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            // Mostrar todas las actividades inicialmente
+            var activities = document.getElementsByClassName('activity');
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            // Ajustes según la duración seleccionada
+             if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } 
+            if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                var step6 = document.getElementById('activity-3-step6');
+                if (step6) {
+                    step6.style.display = 'none';
+               }
+           
+            }
+        }
+
+        function navigateTo(id) {
+            var element = document.getElementById(id);
+            window.scrollTo({
+                top: element.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</head>
+<body onload="updateActivities()">
+
+<div class="header">
+    <h1>Playbook-P4-M08</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+<!-- Actividad 0 -->
+<div id="activity-0" class="activity">
+    <div class="banner" onclick="toggleContent('revision_materiales')">
+        <div class="title">📚 Actividad 0: Revisión de Misión ⏰ Tiempo: N/A</div>
+        <div class="subtitle">Verificar que los materiales necesarios estén listos.</div>
+    </div>
+    <div id="revision_materiales" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1:</strong> Proyectar Diapositiva 1 y verificar que estén disponibles: Magic Boards, BBC Micro, Cutebot con baterías cargadas, computadoras/tablets con MakeCode abierto.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> No aplica</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Saludar a los genios y preparar el ambiente para el aprendizaje.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Gnius Club".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Hola Genios! 🌟 Hoy tenemos una misión increíble. Vamos a aprender cómo programar un robot para moverse exactamente como queremos. ¿Listos para la aventura?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo están?" con emoticonos de mano genio y pulgar hacia abajo.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de empezar, quiero saber cómo están. Si están listos hagan la señal de ‘genios’, si no, pulgar hacia abajo. ¡Los genios listos seguro serán grandes programadores hoy!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 y guiar a los estudiantes en el ritual "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Juntamos nuestras manos en agradecimiento por lo que vamos a aprender hoy. ¡Gracias por estar aquí, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión" y leer los objetivos en voz alta.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos dos objetivos principales: programar movimientos básicos en Cutebot y trabajar en equipo para lograrlo."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('brain_vitamin')">
+        <div class="title">🧠 Actividad 2: Brain Vitamin ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Ejercicio para preparar el cerebro para la programación.</div>
+    </div>
+    <div id="brain_vitamin" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "State Change".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de comenzar a programar, vamos a hacer un ejercicio para poner nuestros cerebros en modo programación. ¿Listos para convertirnos en genios de los algoritmos?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 7 con los pasos de la secuencia.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a simular que somos robots y que estamos programados para hacer una secuencia de movimientos. Primero, levantaremos las manos, después daremos un giro, y por último, daremos un paso adelante. ¡Repitan conmigo, manos arriba, giro, paso! ¡Vamos a hacerlo juntos varias veces y cada vez más rápido!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar Diapositiva 8 y guiar a los estudiantes para repetir la secuencia más rápido.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora vamos a hacer la secuencia más rápido, como si fuéramos robots súper eficientes. ¡Manos arriba, giro, paso! ¡Listos, 1, 2, 3! ¡Excelente trabajo, Genios, ahora estamos listos para programar!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🚗 Actividad 3: Challenge ⏰ Tiempo: 33.5 minutos</div>
+        <div class="subtitle">Desafío para programar los movimientos de los coches autónomos.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 9 "Portada del Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Bienvenidos, ingenieros de Gnius Motors! Hoy trabajarán en la primera empresa mexicana de coches autónomos. En Gnius Motors, estamos revolucionando la manera en que los coches funcionan, creando vehículos que se estacionan solos, sin la ayuda de conductores. Su misión es ayudar a diseñar y programar tres diferentes formas de estacionarse, cada una con sus propios desafíos. Como ingenieros, ustedes tendrán que programar los movimientos precisos que harán que nuestros coches autónomos sean los más seguros y avanzados del mundo. ¡Vamos a resolver estos retos juntos!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Guiar a los estudiantes para que reúnan los materiales necesarios.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de comenzar, asegúrense de tener todo lo necesario: Microbit, Cutebot y las Magic Tablets. ¡Recójanlos y prepárense para la misión!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (3 minutos):</strong> Proyectar Diapositiva 10 "Recogiendo materiales".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Tienen 3 minutos para recoger sus materiales y prepararse. ¡Asegúrense de tener todo listo para empezar!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (3 minutos):</strong> Proyectar Diapositiva 11 "Challenges".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> """Niveles de reto para elegir: 
+                    - Rookie: aprenderán los movimientos básicos para estacionar un coche. Si eliges Rookie, tu misión será programar el Cutebot para estacionarse de forma segura en un lugar establecido. La distancia y el giro son libres, pero deben hacerlo con precisión. 
+                    - Master: el reto es estacionar en un espacio reducido y en paralelo, con maniobras más precisas. Deberás ajustar los giros y las maniobras para que el coche no choque al estacionarse. 
+                    - Hacker: deberán programar su coche para evitar obstáculos en movimiento mientras estacionan. Los obstáculos los pondrán ustedes mismos, usando materiales disponibles como legos, gomas, lápices, o estucheras. ¡Elijan el nivel con el que quieran empezar!"""</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (20 minutos):</strong> Proyectar Diapositiva 12 "Challenge en proceso".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Es momento de poner manos a la obra. Tienen 20 minutos para programar sus Cutebots según el reto que eligieron. Ajusten la velocidad y los giros para que el coche se estacione con precisión. ¡Trabajen en equipo y hagan los ajustes necesarios!"</td>
+            </tr>
+            <tr id="activity-3-step6">
+                <td><strong>PASO 6 (5 minutos):</strong> Supervisar las pruebas de los equipos y ayudar con los ajustes según el nivel elegido.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Es momento de probar su código. Ajusten los detalles si es necesario. Cada reto tiene sus propios desafíos, así que ajusten la velocidad y giros según el nivel."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (3 minutos):</strong> Proyectar Diapositiva 13 "Reflexión del Challenge" para cerrar la actividad.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Genios, excelente trabajo! Reflexionemos sobre lo que aprendimos. ¿Qué ajustes fueron clave para que su Cutebot se estacionara bien? ¿Qué diferencias encontraron entre los niveles?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 8 (0.5 minutos):</strong> Proyectar Diapositiva 14 "Revisión de misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> """Muy bien, ingenieros de Gnius Motors, hemos completado la misión del día. ¿Qué logramos hoy? Revisemos: 
+                - Estacionamos coches autónomos en diferentes escenarios. 
+                - Aprendimos a programar movimientos precisos. 
+                - Trabajamos en equipo para resolver problemas complejos. ¡Gran trabajo! ¿Qué harían diferente la próxima vez?"""</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 4: Team Gnius ⏰ Tiempo: 5.5 minutos</div>
+        <div class="subtitle">Formar equipos y asignar roles para trabajar en equipo en la misión.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 15 "Portada Team Gnius".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Genios, bienvenidos a nuestra fábrica de coches autónomos! Hoy, cada equipo será responsable de diseñar el sistema de estacionamiento automático. Vamos a usar Team CANVAS para definir los roles y planificar cómo vamos a lograr que nuestro coche se estacione perfectamente. ¡Comencemos!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Guiar a los estudiantes en la formación de equipos y la asignación de roles dentro del Team CANVAS.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Cada equipo ahora debe organizarse como si fueran un grupo de ingenieros en una fábrica. Tienen 1 minuto para formar equipos y asignar los roles: Ingeniero Jefe (Líder), Desarrollador de Software (Programador), y Control de Calidad (Tester). ¡Todos son importantes para que el coche se estacione con precisión!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Explicar brevemente qué es Team CANVAS y cómo ayuda a planificar proyectos en equipo.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, vamos a usar Team CANVAS, que es una herramienta visual para ayudarnos a organizar los equipos. Con Team CANVAS, ustedes definirán qué hará cada persona en el equipo, qué valores los guiarán, y cuál será el objetivo principal. Los roles son importantes para saber quién lidera, quién programa y quién valida el trabajo. Piensen en cómo un equipo de ingenieros debe coordinarse para lograr que el coche se estacione perfectamente."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (2 minutos):</strong> Proyectar Diapositiva 16 "Think-Pair-Share" y guiar la discusión usando Team CANVAS.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Tómense 2 minutos para discutir con su compañero cómo su rol contribuirá al objetivo de estacionar el coche autónomo. Luego compartanlo con el equipo. ¡En nuestra fábrica, todos los roles son clave para que el coche funcione como debe!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (1 minuto):</strong> Proyectar Diapositiva 17 "Compartir Reflexiones" y pedir a los equipos que compartan sus ideas.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que han completado su Team CANVAS, compartan con su equipo sus ideas sobre cómo lograr que el coche se estacione de manera precisa. ¡Recuerden, en nuestra fábrica, el trabajo en equipo lo es todo!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 5: Honor de Dojo ⏰ Tiempo: 4.5 minutos</div>
+        <div class="subtitle">Reflexión final sobre el trabajo en equipo y recogida de materiales.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (3 minutos):</strong> Proyectar Diapositiva 18 "Revisión de Objetivos" para guiar la reflexión final.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Genios, gran trabajo hoy! ¿Logramos nuestros objetivos de estacionar el coche autónomo con precisión?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Guiar la reflexión sobre el esfuerzo colectivo.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy no solo programamos un coche, ¡hicimos que un equipo de ingenieros trabajara unido! El éxito de nuestra misión se debe al esfuerzo conjunto, a la comunicación y a cómo cada uno asumió su rol con responsabilidad. ¡Felicidades a todos por su esfuerzo y colaboración!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 19 "Honor de Dojo" y guiar a los estudiantes para que recojan y organicen los materiales usados durante la clase.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, como parte del Honor de Dojo, vamos a dejar nuestro espacio de trabajo limpio y organizado, tal como lo encontramos al comenzar. ¡Un buen ingeniero siempre respeta su área de trabajo!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+    </div> <!-- Cierre del container -->
+
+    <!-- Scripts adicionales si es necesario -->
+    <script>
+        // Agregar scripts adicionales aquí si es necesario
+    </script>
+
+</body>
+</html>
